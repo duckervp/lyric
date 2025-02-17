@@ -1,13 +1,12 @@
 import type { BoxProps } from '@mui/material/Box';
 
-import { useState, useCallback } from 'react';
+import { useCallback } from 'react';
 
 import Box from '@mui/material/Box';
 import Slide from '@mui/material/Slide';
 import Input from '@mui/material/Input';
 import Button from '@mui/material/Button';
 import { useTheme } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 
 import { bgBlur } from 'src/theme/styles';
@@ -19,24 +18,12 @@ import { Iconify } from 'src/components/iconify';
 export function Searchbar({ sx, ...other }: BoxProps) {
   const theme = useTheme();
 
-  const [open, setOpen] = useState(false);
-
-  const handleOpen = useCallback(() => {
-    setOpen((prev) => !prev);
-  }, []);
-
-  const handleClose = useCallback(() => {
-    setOpen(false);
+  const handleClick = useCallback(() => {
+    console.log('Search');
   }, []);
 
   return (
       <div>
-        {!open && (
-          <IconButton onClick={handleOpen}>
-            <Iconify icon="eva:search-fill" />
-          </IconButton>
-        )}
-
         <Slide direction="down" in>
           <Box
             sx={{
@@ -47,13 +34,13 @@ export function Searchbar({ sx, ...other }: BoxProps) {
               width: '100%',
               display: 'flex',
               alignItems: 'center',
-              px: { xs: 3, md: 5 },
+              px: { xs: 1.5, md: 3 },
               boxShadow: theme.customShadows.z8,
               height: {
-                xs: 'var(--layout-header-mobile-height)',
-                md: 'var(--layout-header-desktop-height)',
+                xs: 'var(--song-header-mobile-height)',
+                md: 'var(--song-header-desktop-height)',
               },
-              borderRadius: 3,
+              // borderRadius: 3,
               ...sx,
             }}
             {...other}
@@ -70,7 +57,7 @@ export function Searchbar({ sx, ...other }: BoxProps) {
               }
               sx={{ fontWeight: 'fontWeightBold' }}
             />
-            <Button variant="contained" onClick={handleClose}>
+            <Button variant="contained" onClick={handleClick} color="inherit">
               Search
             </Button>
           </Box>
