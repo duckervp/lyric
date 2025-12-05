@@ -106,7 +106,7 @@ function SongItem({ sx, item, ...other }: BoxProps & { item: Props['list'][numbe
             {item.title}
           </Link>
         }
-        secondary={item.description}
+        secondary={item.artist}
         primaryTypographyProps={{ noWrap: true, typography: 'subtitle2' }}
         secondaryTypographyProps={{ mt: 0.5, noWrap: true, component: 'span' }}
       />
